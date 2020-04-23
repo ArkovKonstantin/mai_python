@@ -1,0 +1,15 @@
+(venv) konstantin@ubuntu:~/PycharmProjects/mai_python$ pytest -v
+======================================================================================================= test session starts ========================================================================================================
+platform linux -- Python 3.8.1, pytest-5.4.1, py-1.8.1, pluggy-0.13.1 -- /home/konstantin/PycharmProjects/mai_python/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/konstantin/PycharmProjects/mai_python
+collected 6 items
+
+test_main.py::test_list_attr PASSED                                                                                                                                                                                          [ 16%]
+test_main.py::test_class_attr PASSED                                                                                                                                                                                         [ 33%]
+test_main.py::test_negative_price PASSED                                                                                                                                                                                     [ 50%]
+test_main.py::test_default_price_value PASSED                                                                                                                                                                                [ 66%]
+test_main.py::test_repr PASSED                                                                                                                                                                                               [ 83%]
+test_main.py::test_repr_color_code PASSED                                                                                                                                                                                    [100%]
+
+======================================================================================================== 6 passed in 0.06s ========================================================================================================
