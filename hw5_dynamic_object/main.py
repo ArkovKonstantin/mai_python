@@ -1,6 +1,5 @@
 import json
 import keyword
-from collections import abc
 
 
 class ColorizeMixin:
@@ -14,9 +13,9 @@ class ColorizeMixin:
 class Advert(ColorizeMixin):
 
     def __new__(cls, obj):
-        if isinstance(obj, abc.Mapping):
+        if isinstance(obj, dict):
             return super().__new__(cls)
-        elif isinstance(obj, abc.MutableSequence):
+        elif isinstance(obj, list):
             return [cls(item) for item in obj]
         else:
             return obj
