@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from hw5_dynamic_object.main import Advert
+from dynamic_object.main import Advert
 
 
 def test_list_attr():
