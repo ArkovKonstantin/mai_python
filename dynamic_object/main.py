@@ -6,11 +6,11 @@ class ColorizeMixin:
     repr_color_code = 33  # green
 
     def __repr__(self):
-        return '\033' + f"[1;{self.repr_color_code};48m"
+        text = super().__repr__()
+        return '\033' + f"[1;{self.repr_color_code};48m" + text
 
 
-class Advert(ColorizeMixin):
-
+class BaseAdvert:
     def __new__(cls, obj):
         if isinstance(obj, dict):
             return super().__new__(cls)
@@ -48,6 +48,10 @@ class Advert(ColorizeMixin):
 
     def __repr__(self):
         return f'{self.title} | {self.price} ₽'
+
+
+class Advert(ColorizeMixin, BaseAdvert):
+    pass
 
 
 if __name__ == "__main__":
