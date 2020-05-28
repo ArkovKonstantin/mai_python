@@ -13,7 +13,6 @@ from collections import defaultdict
 
 
 ## 1. Написать функцию получения размера генератора
-
 def ilen(iterable: Iterable):
     """
     >>> foo = (x for x in range(10))
@@ -21,7 +20,10 @@ def ilen(iterable: Iterable):
     10
     """
     tmp = iterable
-    return len(list(tmp))
+    count = 0
+    for _ in tmp:
+        count += 1
+    return count
 
 
 ## 2. Написать функцию flatten, которая из многоуровневого массива сделает одноуровневый
@@ -84,14 +86,17 @@ def chunks(size: int, iterable: Iterable):
     """
     buf = []
     idx = 0
-    for v in iterable:
-        if idx >= size:
-            idx = 0
-            yield tuple(buf)
-            buf = []
-        buf.append(v)
-        idx += 1
-    yield tuple(buf)
+    if size > 0:
+        for v in iterable:
+            if idx >= size:
+                idx = 0
+                yield tuple(buf)
+                buf = []
+            buf.append(v)
+            idx += 1
+        yield tuple(buf)
+    else:
+        yield tuple(iterable)
 
 
 # list(chunks(3, [0, 1, 2, 3, 4]))
@@ -121,8 +126,8 @@ def last(iterable: Iterable):
     >>> last(range(0))
     None
     """
-    return list(iterable).pop()
+    i = None
+    for i in iterable:
+        pass
 
-
-if __name__ == '__main__':
-    print(first([]))
+    return i

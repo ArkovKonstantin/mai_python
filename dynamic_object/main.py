@@ -6,8 +6,7 @@ class ColorizeMixin:
     repr_color_code = 33  # green
 
     def __repr__(self):
-        print(self.__dict__)
-        return '\033' + f"[1;{self.repr_color_code};48m{self.title} | {self.price} ₽"
+        return '\033' + f"[1;{self.repr_color_code};48m"
 
 
 class Advert(ColorizeMixin):
@@ -47,6 +46,19 @@ class Advert(ColorizeMixin):
         else:
             raise ValueError
 
+    def __repr__(self):
+        return f'{self.title} | {self.price} ₽'
+
 
 if __name__ == "__main__":
-    pass
+    data = """{
+                        "title": "Вельш-корги",
+                        "price": 1000,
+                        "class": "dogs",
+                        "location": {
+                        "address": "сельское поселение Ельдигинское, поселок санатория Тишково, 25"
+                        }
+                    }"""
+    mapping = json.loads(data)
+    ad = Advert(mapping)
+    print(ad)
